@@ -2,7 +2,6 @@ import FacebookLogin from "react-facebook-login";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { setToken } from "../../slices/auth";
-import Secure from "../Secure";
 
 function Login() {
   const dispatch = useDispatch();
