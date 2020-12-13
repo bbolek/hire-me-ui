@@ -1,24 +1,27 @@
-import logo from "./logo.svg";
 import "./App.css";
 import "./index.css";
-
+import { useDispatch, useSelector } from "react-redux";
+import { putToken, deleteToken } from "./slices/auth";
 function App() {
+  const dispatch = useDispatch();
+
+  const { token } = useSelector((state) => state).auth;
+
+  const handleUp = () => {
+    dispatch(putToken("myToken"));
+  };
+
+  const handleDown = () => {
+    dispatch(deleteToken());
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>My Amazing Counter</h1>
+
+      <h2>Current Count: {token}</h2>
+      <button onClick={handleUp}>UP</button>
+      <button onClick={handleDown}>DOWN</button>
     </div>
   );
 }
